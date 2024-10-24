@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>SIGN UP FORM</h1>
+        <form action="#" name="form">
+            <table class="table">
+                <tr>
+                    <td>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="enter full name">
+                        <span id="error1"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="enter email">
+                        <span id="error2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="password" name="password" class="form-control" placeholder="enter password">
+                        <span id="error3"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" value="submit" onclick="regex()" class="btn btn-primary">submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script>
+            function regex() {
+        let username = document.getElementById('username').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+
+
+        let name_pattern = `/^[A-Za-z][A-Za-z0-9]{7,29}$/`;
+        let email_pattern = `/^([a-zA-Z0-9_\-\.])+\@([a-zA-Z])+\.([A-Za-z]{2,3})$/`;
+        let password_pattern = `/^[a-zA-Z]\w{7,14}$/`;
+
+
+        if (username.length == 0) {
+            document.getElementById('username').style.borderColor = "red";
+            document.getElementById('error1').innerHTML = "empty";
+        }
+        else if (name_pattern.test(username) == false) {
+            document.getElementById('error1').innerHTML = "invalid username";
+        }
+        else {
+            document.getElementById('username').style.borderColor = "green";
+            document.getElementById('error1').innerHTML = "";
+        }
+
+        if (email.length == 0) {
+            document.getElementById('email').style.borderColor = "red";
+            document.getElementById('error2').innerHTML = "empty";
+        }
+        else if (email_pattern.test(email) == false) {
+            document.getElementById('error2').innerHTML = "invalid email";
+        }
+        else {
+            document.getElementById('email').style.borderColor = "green";
+            document.getElementById('error2').innerHTML = "";
+        }
+
+
+        if (password.length == 0) {
+            document.getElementById('password').style.borderColor = "red";
+            document.getElementById('error3').innerHTML = "empty";
+        }
+        else if (pass_pattern.test(password) == false) {
+            document.getElementById('error3').innerHTML = "invalid password";
+        }
+        else {
+            document.getElementById('password').style.borderColor = "green";
+            document.getElementById('error3').innerHTML = "";
+        }
+
+        if (name_pattern.test(name), email_pattern.test(email), pass_pattern.test(password) == true) {
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+            alert("Data saved");
+        }
+    }
+        </script>
+</body>
+</html>
